@@ -7,7 +7,7 @@ var size = 128;
 func _ready() -> void:
 	if apply_starting_velocity:
 		linear_velocity = starting_velocity
-	#apply_central_impulse(starting_velocity)
+		#apply_central_impulse(starting_velocity)
 	await get_tree().create_timer(0.1).timeout
 	contact_monitor = true
 	max_contacts_reported = 16
