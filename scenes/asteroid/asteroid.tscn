@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://dfnuw2bqmntil" path="res://scripts/asteroid/asteroid.gd" id="1_j1t37"]
 [ext_resource type="Texture2D" uid="uid://bdalo7qia7bee" path="res://icon.svg" id="2_8t7q7"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pxvi8"]
+bounce = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1t37"]
 size = Vector2(128, 128)
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1386915693]
+physics_material_override = SubResource("PhysicsMaterial_pxvi8")
 continuous_cd = 2
 max_contacts_reported = 5
 script = ExtResource("1_j1t37")

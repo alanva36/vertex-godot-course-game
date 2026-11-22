@@ -27,7 +27,7 @@ func instanciate_asteroid
 	
 	get_parent().add_child(asteroid_node);
 	asteroid_node.global_position = desired_position;
-	asteroid_node.linear_velocity = desired_velocity
+	asteroid_node.linear_velocity += desired_velocity
 
 func on_body_entered(body: Node) -> void:
 	var body_velocity = body.linear_velocity
@@ -42,8 +42,8 @@ func on_body_entered(body: Node) -> void:
 	var parts_count: int = random_generator.randi_range(2, 5)
 	var per_part_angle: float = 2.0 * PI / parts_count
 	for i in range(parts_count):
-		var desired_velocity : Vector2 = global_position - body.global_position
-		desired_velocity *= 0.25
+		#var desired_velocity : Vector2 = global_position - body.global_position
+		#desired_velocity *= 0.25
 		var desired_force_vector : Vector2 = Vector2.from_angle(starting_angle + i * per_part_angle)
-		desired_velocity += desired_force_vector * size
-		call_deferred("instanciate_asteroid", global_position, desired_velocity, size / 2)
+		#desired_velocity += desired_force_vector * size
+		call_deferred("instanciate_asteroid", global_position, desired_force_vector * size, size / 2)

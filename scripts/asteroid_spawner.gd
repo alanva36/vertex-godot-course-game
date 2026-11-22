@@ -30,6 +30,10 @@ func spawn_asteroid():
 	
 	get_parent().add_child(asteroid_node);
 	asteroid_node.global_position = spawn_pos;
+	var random_rotation: float = random_generator.randf() * 2.0 * PI
+	asteroid_node.global_rotation = random_rotation 
 	var desired_velocity: Vector2 = spawn_pos.direction_to(get_window().size / 2) * 350
 	asteroid_node.linear_velocity = desired_velocity
+	var random_angular_velocity: float = random_generator.randf() * 2.0 * PI
+	asteroid_node.angular_velocity = random_angular_velocity
 	
