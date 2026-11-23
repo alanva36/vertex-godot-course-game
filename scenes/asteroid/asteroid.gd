@@ -35,7 +35,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	split()
 
 
-func _on_detector_area_entered() -> void:
+func _on_detector_area_entered(_area: Area2D) -> void:
 	split()
 
 
