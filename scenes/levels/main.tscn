@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://bptrt840uhd7k"]
 
 [ext_resource type="Script" uid="uid://bg8pgtsmvvwgp" path="res://scripts/asteroid_spawner.gd" id="2_2vj2h"]
+[ext_resource type="PackedScene" uid="uid://c7ka418rmwry8" path="res://scenes/asteroid/asteroid.tscn" id="2_j4d2a"]
+[ext_resource type="PackedScene" uid="uid://btbr5masag3lb" path="res://scenes/player/player.tscn" id="2_y0acb"]
 
 [node name="Main" type="Node2D" unique_id=460889357]
 
 [node name="AsteroidSpawner" type="Node" parent="." unique_id=398971140]
 script = ExtResource("2_2vj2h")
+asteroid = ExtResource("2_j4d2a")
 metadata/_custom_type_script = "uid://bg8pgtsmvvwgp"
+
+[node name="CharacterBody2D" parent="." unique_id=836718858 instance=ExtResource("2_y0acb")]
+position = Vector2(509, 340)
