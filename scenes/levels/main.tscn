@@ -3,8 +3,16 @@
 [ext_resource type="Script" uid="uid://bg8pgtsmvvwgp" path="res://scripts/asteroid_spawner.gd" id="2_2vj2h"]
 [ext_resource type="PackedScene" uid="uid://c7ka418rmwry8" path="res://scenes/asteroid/asteroid.tscn" id="2_j4d2a"]
 [ext_resource type="PackedScene" uid="uid://btbr5masag3lb" path="res://scenes/player/player.tscn" id="2_y0acb"]
+[ext_resource type="Texture2D" uid="uid://dv2vbaj8uyfqb" path="res://assets/background/background.png" id="4_j4d2a"]
 
 [node name="Main" type="Node2D" unique_id=460889357]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1353376289]
+z_index = -1
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("4_j4d2a")
+stretch_mode = 1
 
 [node name="AsteroidSpawner" type="Node" parent="." unique_id=398971140]
 script = ExtResource("2_2vj2h")

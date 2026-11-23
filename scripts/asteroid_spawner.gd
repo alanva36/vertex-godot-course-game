@@ -1,7 +1,7 @@
 class_name AsteroidSpawner
 extends Node
 
-const ASTEROID_SPEED: float = 350.0
+const ASTEROID_SPEED: float = 150.0
 const MIN_SPAWN_DELAY: float = 1.0
 const MAX_SPAWN_DELAY: float = 3.0
 

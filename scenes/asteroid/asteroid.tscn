@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c7ka418rmwry8"]
 
 [ext_resource type="Script" uid="uid://dfnuw2bqmntil" path="res://scenes/asteroid/asteroid.gd" id="1_j1t37"]
-[ext_resource type="Texture2D" uid="uid://bdalo7qia7bee" path="res://icon.svg" id="2_8t7q7"]
+[ext_resource type="Texture2D" uid="uid://bw7dojxu1k1oq" path="res://assets/sprites/asteroid.png" id="2_j1t37"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pxvi8"]
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1t37"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
 
 [node name="Asteroid" type="RigidBody2D" unique_id=1386915693]
 collision_layer = 4
@@ -21,7 +21,7 @@ script = ExtResource("1_j1t37")
 shape = SubResource("RectangleShape2D_j1t37")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=469942340]
-texture = ExtResource("2_8t7q7")
+texture = ExtResource("2_j1t37")
 
 [node name="Detector" type="Area2D" parent="." unique_id=566142676]
 collision_layer = 4

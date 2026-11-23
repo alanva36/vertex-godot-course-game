@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-const BASE_SIZE: float = 128.0
-const MIN_SPLIT_SIZE: float = 32.0
+const BASE_SIZE: float = 64.0
+const MIN_SPLIT_SIZE: float = 40.0
 
 @export var size: float = BASE_SIZE
 @export var starting_velocity: Vector2
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func on_body_entered(body: Node) -> void:
-	if body is RigidBody2D and body.linear_velocity.length() > 2.0 * size:
+	if body is RigidBody2D and body.linear_velocity.length() > 1.25 * size:
 		split()
 
 
@@ -45,7 +45,7 @@ func split() -> void:
 	is_splitting = true
 
 	queue_free()
-	var next_size: float = size / 2.0
+	var next_size: float = size / 1.25
 	if next_size >= MIN_SPLIT_SIZE:
 		var starting_angle: float = randf() * TAU
 		var parts_count: int = randi_range(2, 5)
@@ -71,6 +71,7 @@ func instantiate_asteroid(
 
 	var detector_shape: CollisionShape2D = asteroid_node.get_node("Detector/CollisionShape2D")
 	detector_shape.shape = body_shape.shape
+	detector_shape.shape.size = Vector2(new_size, new_size)
 
 	var scale_factor: float = new_size / BASE_SIZE
 	asteroid_node.get_node("Sprite2D").scale = Vector2(scale_factor, scale_factor)

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://jggl2wk2fqqg"]
 
-[ext_resource type="Texture2D" uid="uid://bdalo7qia7bee" path="res://icon.svg" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://tfier05cg582" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
+[ext_resource type="Texture2D" uid="uid://bmt0n2r7dahqf" path="res://assets/sprites/bullet.png" id="2_83itf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxkn6"]
-radius = 6.0
+radius = 4.0
 
 [node name="Area2D" type="Area2D" unique_id=459639134]
 collision_layer = 2
@@ -12,8 +12,7 @@ collision_mask = 6
 script = ExtResource("1_83itf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020495296]
-scale = Vector2(0.082143545, 0.082143545)
-texture = ExtResource("1_7c8un")
+texture = ExtResource("2_83itf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1896429246]
 shape = SubResource("CircleShape2D_vxkn6")
