@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bptrt840uhd7k"]
 
+[ext_resource type="Texture2D" uid="uid://dv2vbaj8uyfqb" path="res://assets/background/background.png" id="1_b6bv0"]
 [ext_resource type="Script" uid="uid://bg8pgtsmvvwgp" path="res://scripts/asteroid_spawner.gd" id="2_2vj2h"]
 [ext_resource type="PackedScene" uid="uid://c7ka418rmwry8" path="res://scenes/asteroid/asteroid.tscn" id="2_j4d2a"]
 [ext_resource type="PackedScene" uid="uid://btbr5masag3lb" path="res://scenes/player/player.tscn" id="2_y0acb"]
 [ext_resource type="PackedScene" uid="uid://d2428pkgrxgii" path="res://scenes/ui/hud.tscn" id="4_j4d2a"]
+[ext_resource type="AudioStream" uid="uid://cxvym0c6g3frs" path="res://assets/audio/exploration.ogg" id="5_u81e1"]
 
 [node name="Main" type="Node2D" unique_id=460889357]
 
@@ -11,7 +13,7 @@
 z_index = -1
 offset_right = 1280.0
 offset_bottom = 640.0
-texture = ExtResource("4_j4d2a")
+texture = ExtResource("1_b6bv0")
 stretch_mode = 1
 
 [node name="AsteroidSpawner" type="Node" parent="." unique_id=398971140]
@@ -23,3 +25,8 @@ metadata/_custom_type_script = "uid://bg8pgtsmvvwgp"
 position = Vector2(509, 340)
 
 [node name="HUD" parent="." unique_id=1998369508 instance=ExtResource("4_j4d2a")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1351174901]
+stream = ExtResource("5_u81e1")
+autoplay = true
+parameters/looping = true
