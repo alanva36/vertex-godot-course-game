@@ -1,9 +1,9 @@
 extends RigidBody2D
 
-const BASE_SIZE: float = 64.0
-const MIN_SPLIT_SIZE: float = 40.0
+const BASE_RADIUS: float = 20.0
+const MIN_SPLIT_SIZE: float = 5.0
 
-@export var size: float = BASE_SIZE
+@export var radius: float = BASE_RADIUS
 @export var starting_velocity: Vector2
 @export var apply_starting_velocity: bool = false
 
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func on_body_entered(body: Node) -> void:
-	if body is RigidBody2D and body.linear_velocity.length() > 1.25 * size:
+	if body is RigidBody2D and body.linear_velocity.length() > 1.25 * radius:
 		split()
 
 
@@ -47,39 +47,39 @@ func split() -> void:
 	GameManager.add_score(10);
 
 	queue_free()
-	var next_size: float = size / 1.25
-	if next_size >= MIN_SPLIT_SIZE:
+	var next_radius: float = radius / 1.25
+	if next_radius >= MIN_SPLIT_SIZE:
 		var starting_angle: float = randf() * TAU
 		var parts_count: int = randi_range(2, 5)
 		var per_part_angle: float = TAU / parts_count
 
 		for i in range(parts_count):
 			var direction := Vector2.from_angle(starting_angle + i * per_part_angle)
-			call_deferred("instantiate_asteroid", global_position, direction * size, next_size)
+			call_deferred("instantiate_asteroid", global_position, direction * radius, next_radius)
 
 	# hide()
 	# await get_tree().physics_frame
 
 
 func instantiate_asteroid(
-		desired_position: Vector2, desired_velocity: Vector2, new_size: float
+		desired_position: Vector2, desired_velocity: Vector2, new_radius: float
 	) -> void:
 	var asteroid_scene: PackedScene = load(scene_file_path)
 	var asteroid_node: RigidBody2D = asteroid_scene.instantiate()
 
 	var body_shape: CollisionShape2D = asteroid_node.get_node("CollisionShape2D")
 	body_shape.shape = body_shape.shape.duplicate()
-	body_shape.shape.size = Vector2(new_size, new_size)
+	body_shape.shape.radius = new_radius
 
 	var detector_shape: CollisionShape2D = asteroid_node.get_node("Detector/CollisionShape2D")
 	detector_shape.shape = body_shape.shape
-	detector_shape.shape.size = Vector2(new_size, new_size)
+	detector_shape.shape.radius = new_radius
 
-	var scale_factor: float = new_size / BASE_SIZE
+	var scale_factor: float = new_radius / BASE_RADIUS
 	asteroid_node.get_node("Sprite2D").scale = Vector2(scale_factor, scale_factor)
-	asteroid_node.size = new_size
+	asteroid_node.radius = new_radius
 
-	var spawn_offset := desired_velocity.normalized() * (new_size * 0.6)
+	var spawn_offset := desired_velocity.normalized() * (new_radius * 0.6)
 	asteroid_node.global_position = desired_position + spawn_offset
 	print(desired_velocity)
 	asteroid_node.linear_velocity += desired_velocity
