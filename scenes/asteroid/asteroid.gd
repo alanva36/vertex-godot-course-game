@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const BASE_RADIUS: float = 20.0
-const MIN_SPLIT_RADIUS: float = 5.0
+const MIN_SPLIT_RADIUS: float = 12.0
 
 @export var radius: float = BASE_RADIUS
 @export var starting_velocity: Vector2
@@ -37,14 +37,12 @@ func _on_detector_body_entered(body: Node2D) -> void:
 
 func _on_detector_area_entered(_area: Area2D) -> void:
 	split()
-
+	GameManager.add_score(10);
 
 func split() -> void:
 	if not can_split or is_splitting:
 		return
 	is_splitting = true
-
-	GameManager.add_score(10);
 
 	queue_free()
 	var next_radius: float = radius / 1.25
@@ -82,6 +80,6 @@ func instantiate_asteroid(
 	var spawn_offset := desired_velocity.normalized() * (new_radius * 0.6)
 	asteroid_node.global_position = desired_position + spawn_offset
 	print(desired_velocity)
-	asteroid_node.linear_velocity += desired_velocity
+	asteroid_node.linear_velocity = desired_velocity
 
 	get_parent().add_child(asteroid_node)
