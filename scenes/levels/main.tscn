@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bg8pgtsmvvwgp" path="res://scripts/asteroid_spawner.gd" id="2_2vj2h"]
 [ext_resource type="PackedScene" uid="uid://c7ka418rmwry8" path="res://scenes/asteroid/asteroid.tscn" id="2_j4d2a"]
 [ext_resource type="PackedScene" uid="uid://btbr5masag3lb" path="res://scenes/player/player.tscn" id="2_y0acb"]
-[ext_resource type="Texture2D" uid="uid://dv2vbaj8uyfqb" path="res://assets/background/background.png" id="4_j4d2a"]
+[ext_resource type="PackedScene" uid="uid://d2428pkgrxgii" path="res://scenes/ui/hud.tscn" id="4_j4d2a"]
 
 [node name="Main" type="Node2D" unique_id=460889357]
 
@@ -21,3 +21,5 @@ metadata/_custom_type_script = "uid://bg8pgtsmvvwgp"
 
 [node name="CharacterBody2D" parent="." unique_id=836718858 instance=ExtResource("2_y0acb")]
 position = Vector2(509, 340)
+
+[node name="HUD" parent="." unique_id=1998369508 instance=ExtResource("4_j4d2a")]

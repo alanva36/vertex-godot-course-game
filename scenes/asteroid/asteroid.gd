@@ -44,6 +44,8 @@ func split() -> void:
 		return
 	is_splitting = true
 
+	GameManager.add_score(10);
+
 	queue_free()
 	var next_size: float = size / 1.25
 	if next_size >= MIN_SPLIT_SIZE:
