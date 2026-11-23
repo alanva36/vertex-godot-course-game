@@ -44,6 +44,7 @@ func split() -> void:
 		return
 	is_splitting = true
 
+	queue_free()
 	var next_size: float = size / 2.0
 	if next_size >= MIN_SPLIT_SIZE:
 		var starting_angle: float = randf() * TAU
@@ -54,12 +55,13 @@ func split() -> void:
 			var direction := Vector2.from_angle(starting_angle + i * per_part_angle)
 			call_deferred("instantiate_asteroid", global_position, direction * size, next_size)
 
-	hide()
-	await get_tree().physics_frame
-	queue_free()
+	# hide()
+	# await get_tree().physics_frame
 
 
-func instantiate_asteroid(desired_position: Vector2, desired_velocity: Vector2, new_size: float) -> void:
+func instantiate_asteroid(
+		desired_position: Vector2, desired_velocity: Vector2, new_size: float
+	) -> void:
 	var asteroid_scene: PackedScene = load(scene_file_path)
 	var asteroid_node: RigidBody2D = asteroid_scene.instantiate()
 
@@ -76,6 +78,7 @@ func instantiate_asteroid(desired_position: Vector2, desired_velocity: Vector2, 
 
 	var spawn_offset := desired_velocity.normalized() * (new_size * 0.6)
 	asteroid_node.global_position = desired_position + spawn_offset
-	asteroid_node.linear_velocity = desired_velocity
+	print(desired_velocity)
+	asteroid_node.linear_velocity += desired_velocity
 
 	get_parent().add_child(asteroid_node)
