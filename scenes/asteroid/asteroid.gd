@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const BASE_RADIUS: float = 20.0
-const MIN_SPLIT_SIZE: float = 5.0
+const MIN_SPLIT_RADIUS: float = 5.0
 
 @export var radius: float = BASE_RADIUS
 @export var starting_velocity: Vector2
@@ -48,7 +48,7 @@ func split() -> void:
 
 	queue_free()
 	var next_radius: float = radius / 1.25
-	if next_radius >= MIN_SPLIT_SIZE:
+	if next_radius >= MIN_SPLIT_RADIUS:
 		var starting_angle: float = randf() * TAU
 		var parts_count: int = randi_range(2, 5)
 		var per_part_angle: float = TAU / parts_count
