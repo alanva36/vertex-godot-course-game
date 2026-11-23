@@ -28,7 +28,7 @@ func handle_rotation(delta: float) -> void:
 	
 func handle_thrust(delta: float) -> void:
 	if Input.is_action_pressed("player_forward"):
-		var forward := Vector2.RIGHT.rotated(rotation)
+		var forward := Vector2.UP.rotated(rotation)
 		velocity += forward * thrust_speed * delta
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction * delta)
@@ -60,8 +60,4 @@ func shoot() -> void:
 
 func die() -> void:
 	print("player died")
-	Signals.player_died.emit()
-	set_physics_process(false)
-	set_process(false)
-	collision_shape.set_deferred("disabled", true)
-	hide()
+	queue_free()

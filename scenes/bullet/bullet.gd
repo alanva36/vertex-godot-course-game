@@ -3,7 +3,7 @@ extends Area2D
 @export var speed: float = 800.0
 
 func _physics_process(delta: float) -> void:
-	position += Vector2.RIGHT.rotated(rotation) * speed * delta
+	position += Vector2.UP.rotated(rotation) * speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

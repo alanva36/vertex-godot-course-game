@@ -55,9 +55,6 @@ func split() -> void:
 			var direction := Vector2.from_angle(starting_angle + i * per_part_angle)
 			call_deferred("instantiate_asteroid", global_position, direction * radius, next_radius)
 
-	# hide()
-	# await get_tree().physics_frame
-
 
 func instantiate_asteroid(
 		desired_position: Vector2, desired_velocity: Vector2, new_radius: float
