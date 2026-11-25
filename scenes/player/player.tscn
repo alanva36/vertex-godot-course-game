@@ -16,11 +16,10 @@ bullet_scene = ExtResource("2_gmlin")
 shape = SubResource("CircleShape2D_4m1fe")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1980694969]
-rotation = 1.5707964
 texture = ExtResource("3_gmlin")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=141089498]
-position = Vector2(19, 0)
+position = Vector2(0, -20)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=180048891]
 wait_time = 0.2
